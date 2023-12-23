@@ -36,7 +36,14 @@ class LoginScreen extends StatelessWidget {
             ),
             const Padding(padding: EdgeInsets.only(top: 29)),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const Homescreen(userID: "userID")),
+                );
+                // potřebuju tvoje přihlášení
+              },
               child: Text('Login',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(
