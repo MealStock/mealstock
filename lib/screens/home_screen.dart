@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:meal_stock/models/user.dart';
+import 'package:meal_stock/services/auth.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, this.userID});
-  final userID;
+  const HomeScreen({super.key, required this.user});
+  final User user;
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -10,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    final auth = Provider.of<AuthService>(context, listen: false);
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -17,8 +21,17 @@ class _HomeScreenState extends State<HomeScreen> {
           "Home",
           style: TextStyle(fontSize: 26),
         ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                auth.signOut();
+              },
+              icon: const Icon(Icons.logout))
+        ],
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
+      // add logout button at the end of the appbar
+
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

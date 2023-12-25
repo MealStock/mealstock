@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:meal_stock/screens/home_screen.dart';
+import 'package:meal_stock/screens/login_screen.dart';
+import 'package:meal_stock/screens/sign_up_screen.dart';
+import 'package:meal_stock/widgets/logo_widget.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -20,12 +22,15 @@ class WelcomeScreen extends StatelessWidget {
               ),
             ),
             const Padding(padding: EdgeInsets.all(16.0)),
-            const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 100.0),
-                child: Placeholder(fallbackHeight: 100.0)), // logo placeholder
+            const LogoWidget(),
             const Padding(padding: EdgeInsets.all(16.0)),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
+                );
+              },
               child: Text('Sign up',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(
@@ -39,12 +44,10 @@ class WelcomeScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => const HomeScreen(userID: "userID")),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
-                // potřebuju tvoje přihlášení
               },
-              child: Text('Login',
+              child: Text('Log in',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(

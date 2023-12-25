@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 class AuthService {
   final auth.FirebaseAuth _auth = auth.FirebaseAuth.instance;
+  String? error;
 
   User? _userFromFirebaseUser(auth.User? user) {
     return user != null ? User(uid: user.uid, email: user.email) : null;
@@ -19,8 +20,10 @@ class AuthService {
       final auth.UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       auth.User? user = result.user;
+      error = null;
       return _userFromFirebaseUser(user)!;
     } catch (e) {
+      error = "Bad email or password.";
       // what should I return when the login fails so it doesnt throw an error?
       return _userFromFirebaseUser(null);
     }
@@ -35,9 +38,11 @@ class AuthService {
         password: password,
       );
       auth.User? user = result.user;
+      error = null;
       return _userFromFirebaseUser(user)!;
     } catch (e) {
       // print(e.toString());
+      error = "Email is already in use.";
       return _userFromFirebaseUser(null);
     }
   }
@@ -45,9 +50,11 @@ class AuthService {
   // sign out
   Future<void> signOut() async {
     try {
+      error = null;
       return await _auth.signOut();
     } catch (e) {
       //print(e.toString());
+      error = "Error signing out.";
       return Future(() => null);
     }
   }
