@@ -53,6 +53,7 @@ class AuthService {
   }
 
   // change password
+  // TODO change the return type to String
   Future<String> changePassword(
       String currentPassword, String newPassword) async {
     String errorMessage = "Heslo bylo úspěšně změněno";

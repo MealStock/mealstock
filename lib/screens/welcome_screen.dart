@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_stock/screens/home_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -21,8 +22,7 @@ class WelcomeScreen extends StatelessWidget {
             const Padding(padding: EdgeInsets.all(16.0)),
             const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 100.0),
-                child: const Placeholder(
-                    fallbackHeight: 100.0)), // logo placeholder
+                child: Placeholder(fallbackHeight: 100.0)), // logo placeholder
             const Padding(padding: EdgeInsets.all(16.0)),
             ElevatedButton(
               onPressed: () {},
@@ -40,7 +40,7 @@ class WelcomeScreen extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const Homescreen(userID: "userID")),
+                      builder: (context) => const HomeScreen(userID: "userID")),
                 );
                 // potřebuju tvoje přihlášení
               },
