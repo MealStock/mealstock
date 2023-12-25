@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "198538398203",
+    "project_id": "mealstock-6126d",
+    "storage_bucket": "mealstock-6126d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:198538398203:android:370a9611abac41b83da35e",
+        "android_client_info": {
+          "package_name": "com.example.meal_stock"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZbaQmr9E8v38OV28loIzmt79RvV4KUSc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
