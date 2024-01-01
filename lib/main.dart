@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('cs', 'CZ'),
       ],
-      title: 'AK Kuřim',
+      title: 'MealStock',
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: null, // TODO: add color scheme
