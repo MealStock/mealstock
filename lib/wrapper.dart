@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meal_stock/screens/home_screens/navigator_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:meal_stock/services/auth.dart';
-import 'package:meal_stock/models/user.dart';
+import 'package:meal_stock/models/User.dart';
 import 'package:meal_stock/screens/welcome_screen.dart';
 
 class Wrapper extends StatelessWidget {
@@ -30,4 +30,3 @@ class Wrapper extends StatelessWidget {
     );
   }
 }
-
