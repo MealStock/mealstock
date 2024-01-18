@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
-import 'package:meal_stock/models/user.dart';
+import 'package:meal_stock/models/User.dart';
 import 'package:flutter/material.dart';
 
 class AuthService {
@@ -7,7 +7,9 @@ class AuthService {
   String? error;
 
   User? _userFromFirebaseUser(auth.User? user) {
-    return user != null ? User(uid: user.uid, email: user.email) : null;
+    return user != null
+        ? User.fromFirebase(id: user.uid, email: user.email ?? '')
+        : null;
   }
 
   Stream<User?> get user {
