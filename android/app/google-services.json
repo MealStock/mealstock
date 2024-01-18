@@ -12,7 +12,20 @@
           "package_name": "com.example.meal_stock"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "198538398203-t94j38pleflvte008mofg2918ts0o7af.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.meal_stock",
+            "certificate_hash": "df62daa2f34170423fc703760edae037de78f7f4"
+          }
+        },
+        {
+          "client_id": "198538398203-jj31p9jhich7d3pci4h79vtvi6a5aso3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBZbaQmr9E8v38OV28loIzmt79RvV4KUSc"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "198538398203-jj31p9jhich7d3pci4h79vtvi6a5aso3.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "198538398203-4jfen5ml7e5bu21bbj6tb3gcprcjpeqv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mealStock"
+              }
+            }
+          ]
         }
       }
     }

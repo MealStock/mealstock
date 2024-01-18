@@ -24,7 +24,6 @@ class AuthService {
       return _userFromFirebaseUser(user)!;
     } catch (e) {
       error = "Bad email or password.";
-      // what should I return when the login fails so it doesnt throw an error?
       return _userFromFirebaseUser(null);
     }
   }
@@ -60,7 +59,6 @@ class AuthService {
   }
 
   // change password
-  // TODO change the return type to String
   Future<String> changePassword(
       String currentPassword, String newPassword) async {
     String errorMessage = "Heslo bylo úspěšně změněno";

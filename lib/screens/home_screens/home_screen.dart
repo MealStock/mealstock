@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        "       " + "Mealplan",
+                        "       " "Mealplan",
                         style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Column(
+                           Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Padding(
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               TextButton(
                                 onPressed: () {},
-                                child: const Row(
+                                child: Row(
                                   children: [
                                     CircleAvatar(
                                       radius: 25,

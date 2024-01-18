@@ -158,7 +158,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    const Column(
+                                    Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
@@ -184,7 +184,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                       children: [
                                         TextButton(
                                           onPressed: () {},
-                                          child: const Row(
+                                          child: Row(
                                             children: [
                                               CircleAvatar(
                                                 radius: 25,
@@ -264,7 +264,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    const Column(
+                                    Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
@@ -290,7 +290,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                       children: [
                                         TextButton(
                                           onPressed: () {},
-                                          child: const Row(
+                                          child: Row(
                                             children: [
                                               CircleAvatar(
                                                 radius: 25,
