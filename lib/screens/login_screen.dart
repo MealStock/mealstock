@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:meal_stock/models/User.dart';
 import 'package:meal_stock/services/auth.dart';
+import 'package:meal_stock/services/server.dart';
 import 'package:meal_stock/widgets/logo_widget.dart';
 import 'package:provider/provider.dart';
 

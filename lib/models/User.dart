@@ -2,53 +2,120 @@ import 'Badge.dart';
 import 'Comment.dart';
 import 'FoodRecipes.dart';
 import 'MealPlan.dart';
+import 'dart:convert';
 
-class User {
-  int? id;
-  final String userName;
-  final String firstName;
-  final String lastName;
-  final String email;
-  final int phone;
-  final String gender;
-  final double weight;
-  final double height;
-  final int like;
-  final int dislike;
-  final List<Comment> comment;
-  final List<FoodRecipes> createdFoodRecipes;
-  final List<MealPlan> createdMealPlan;
-  final List<FoodRecipes> likedFoodRecipes;
-  final List<FoodRecipes> savedFoodRecipes;
-  final List<MealPlan> likedMealPlan;
-  final List<MealPlan> savedMealPlan;
-  final double mealScore;
-  final int accountLevel;
-  final List<Badge> gainedBadge;
-  final List<Badge> inProgressBadge;
+class NewUser {
+  String id;
+  String userName;
+  String firstName;
+  String lastName;
+  String? email;
+  String phone;
+  String gender;
+  double weight;
+  double height;
+  int like;
+  int dislike;
+  List<Comment> comment;
+  List<FoodRecipes> createdFoodRecipes;
+  List<MealPlan> createdMealPlan;
+  List<FoodRecipes> likedFoodRecipes;
+  List<FoodRecipes> savedFoodRecipes;
+  List<MealPlan> likedMealPlan;
+  List<MealPlan> savedMealPlan;
+  double mealScore;
+  int accountLevel;
+  List<Badge> gainedBadge;
+  List<Badge> inProgressBadge;
 
-  User(
-    this.phone,
-    this.gender,
-    this.weight,
-    this.height,
-    this.createdFoodRecipes,
-    this.createdMealPlan,
-    this.likedFoodRecipes,
-    this.savedFoodRecipes,
-    this.likedMealPlan,
-    this.savedMealPlan,
-    this.mealScore,
-    this.accountLevel,
-    this.gainedBadge,
-    this.inProgressBadge,
-    this.like,
-    this.dislike,
-    this.comment, {
+  NewUser({
+    required this.phone,
+    required this.gender,
+    required this.weight,
+    required this.height,
+    required this.createdFoodRecipes,
+    required this.createdMealPlan,
+    required this.likedFoodRecipes,
+    required this.savedFoodRecipes,
+    required this.likedMealPlan,
+    required this.savedMealPlan,
+    required this.mealScore,
+    required this.accountLevel,
+    required this.gainedBadge,
+    required this.inProgressBadge,
+    required this.like,
+    required this.dislike,
+    required this.comment,
     required this.id,
     required this.userName,
     required this.firstName,
     required this.lastName,
     required this.email,
   });
+
+  factory NewUser.fromFirebase({required String id, String email = ''}) {
+    return NewUser(
+      id: id,
+      email: email,
+      userName: '',
+      firstName: '',
+      lastName: '',
+      phone: '',
+      gender: '',
+      weight: 0,
+      height: 0,
+      like: 0,
+      dislike: 0,
+      comment: [],
+      createdFoodRecipes: [],
+      createdMealPlan: [],
+      likedFoodRecipes: [],
+      savedFoodRecipes: [],
+      likedMealPlan: [],
+      savedMealPlan: [],
+      mealScore: 0,
+      accountLevel: 0,
+      gainedBadge: [],
+      inProgressBadge: [],
+    );
+  }
+
+  factory NewUser.fromJson(String jsonBody) {
+    final Map<String, dynamic> jsonData = json.decode(jsonBody);
+    final Map<String, dynamic> bodyData = json.decode(jsonData['body']);
+
+    return NewUser(
+      id: bodyData['iduser'],
+      email: bodyData['email'],
+      userName: bodyData['username'],
+      firstName: bodyData['firstname'],
+      lastName: bodyData['lastname'],
+      phone: bodyData['phone'],
+      gender: bodyData['gender'],
+      weight: bodyData['weight'].toDouble(),
+      height: bodyData['height'].toDouble(),
+      like: 0,
+      dislike: 0,
+      comment: [],
+      createdFoodRecipes: [],
+      createdMealPlan: [],
+      likedFoodRecipes: [],
+      savedFoodRecipes: [],
+      likedMealPlan: [],
+      savedMealPlan: [],
+      mealScore: bodyData['mealscore'].toDouble(),
+      accountLevel: 0,
+      gainedBadge: [],
+      inProgressBadge: [],
+    );
+  }
 }
+
+class User {
+  final String uid;
+  final String? email;
+
+  User({required this.uid, this.email});
+}
+
+// this is used for authentication
