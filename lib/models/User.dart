@@ -2,8 +2,9 @@ import 'Badge.dart';
 import 'Comment.dart';
 import 'FoodRecipes.dart';
 import 'MealPlan.dart';
+import 'dart:convert';
 
-class User {
+class NewUser {
   String id;
   String userName;
   String firstName;
@@ -27,7 +28,7 @@ class User {
   List<Badge> gainedBadge;
   List<Badge> inProgressBadge;
 
-  User({
+  NewUser({
     required this.phone,
     required this.gender,
     required this.weight,
@@ -52,8 +53,8 @@ class User {
     required this.email,
   });
 
-  factory User.fromFirebase({required String id, String email = ''}) {
-    return User(
+  factory NewUser.fromFirebase({required String id, String email = ''}) {
+    return NewUser(
       id: id,
       email: email,
       userName: '',
@@ -78,4 +79,43 @@ class User {
       inProgressBadge: [],
     );
   }
+
+  factory NewUser.fromJson(String jsonBody) {
+    final Map<String, dynamic> jsonData = json.decode(jsonBody);
+    final Map<String, dynamic> bodyData = json.decode(jsonData['body']);
+
+    return NewUser(
+      id: bodyData['iduser'],
+      email: bodyData['email'],
+      userName: bodyData['username'],
+      firstName: bodyData['firstname'],
+      lastName: bodyData['lastname'],
+      phone: bodyData['phone'],
+      gender: bodyData['gender'],
+      weight: bodyData['weight'].toDouble(),
+      height: bodyData['height'].toDouble(),
+      like: 0,
+      dislike: 0,
+      comment: [],
+      createdFoodRecipes: [],
+      createdMealPlan: [],
+      likedFoodRecipes: [],
+      savedFoodRecipes: [],
+      likedMealPlan: [],
+      savedMealPlan: [],
+      mealScore: bodyData['mealscore'].toDouble(),
+      accountLevel: 0,
+      gainedBadge: [],
+      inProgressBadge: [],
+    );
+  }
 }
+
+class User {
+  final String uid;
+  final String? email;
+
+  User({required this.uid, this.email});
+}
+
+// this is used for authentication

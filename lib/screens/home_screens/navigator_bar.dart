@@ -22,7 +22,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
     const HomeScreen(),
     const SocialsScreen(),
     const RecipesScreen(),
-    MealplanScreen(),
+    const MealplanScreen(),
     ProfilScreen(),
   ];
 
