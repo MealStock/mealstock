@@ -1,5 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:meal_stock/models/user.dart';
 import 'package:meal_stock/screens/home_screens/socials_screen.dart';
 import 'home_screen.dart';
 import 'mealplan_screen.dart';
@@ -8,7 +8,7 @@ import 'recipes_screen.dart';
 
 class NavigatorBar extends StatefulWidget {
   const NavigatorBar({super.key, required this.user});
-  final User user;
+  final User? user;
   @override
   State<NavigatorBar> createState() => _NavigatorBarState();
 }
