@@ -41,6 +41,7 @@ dependencies:
   firebase: ^9.0.3
   firebase_analytics: ^10.7.4
   firebase_crashlytics: ^3.4.8
+  google_sign_in: ^6.2.1
   flutter_localizations:
     sdk: flutter
   http: ^0.13.6

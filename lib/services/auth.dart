@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' as auth;
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meal_stock/models/user.dart';
 
 class AuthService {
@@ -48,6 +49,23 @@ class AuthService {
       error = "Email is already in use.";
       return _userFromFirebaseUser(null);
     }
+  }
+
+  Future<User?> signInWithGoogle() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    final credential = auth.GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    final auth.UserCredential result =
+        await _auth.signInWithCredential(credential);
+
+    return _userFromFirebaseUser(result.user)!;
   }
 
   // sign out

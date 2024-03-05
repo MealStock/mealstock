@@ -132,7 +132,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const Padding(padding: EdgeInsets.only(top: 17)),
                 ElevatedButton.icon(
                   onPressed: () {
-                    //auth.signInWithGoogle();
+                    auth.signInWithGoogle().then((value) {
+                      if (auth.error != null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(auth.error!),
+                            backgroundColor: Colors.red,
+                          ),
+                        );
+                        return;
+                      }
+                      Navigator.pop(context);
+                    });
                   },
                   icon: const Icon(Icons.login), // change to google logo
                   label: const Text('Sign up with Google',
