@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                           Column(
+                          const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Padding(
@@ -131,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             children: [
                               TextButton(
                                 onPressed: () {},
-                                child: Row(
+                                child: const Row(
                                   children: [
                                     CircleAvatar(
                                       radius: 25,

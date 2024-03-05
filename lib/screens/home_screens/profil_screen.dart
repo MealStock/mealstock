@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:meal_stock/services/server.dart';
 
-import '../../models/User.dart';
-
 class ProfilScreen extends StatelessWidget {
+  const ProfilScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,8 +71,7 @@ class ProfilScreen extends StatelessWidget {
                     child: TextButton(
                         onPressed: () async {
                           testserveru(context);
-                          NewUser user = await testserveru(context);
-                          print(user.userName);
+                          //NewUser user = await testserveru(context);
                         },
                         child: const Text(
                           "Analytics",

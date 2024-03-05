@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_stock/models/User.dart';
 import 'package:meal_stock/services/auth.dart';
-import 'package:meal_stock/services/server.dart';
 import 'package:meal_stock/widgets/logo_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -79,22 +77,22 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.pop(context);
                     });
                   },
-                  child: Text('Log in',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   style: ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       minimumSize: Size(width * 0.8, 50.0)),
+                  child: const Text('Log in',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 ),
                 const Padding(padding: EdgeInsets.only(top: 17)),
                 ElevatedButton.icon(
                   onPressed: () {
                     //auth.signInWithGoogle();
                   },
-                  icon: const Icon(Icons.login), // change to google logo TODO
-                  label: Text('Sign in with Google',
+                  icon: const Icon(Icons.login), // change to google logo
+                  label: const Text('Sign in with Google',
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   style: ElevatedButton.styleFrom(

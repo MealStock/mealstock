@@ -79,7 +79,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                     Padding(
                         padding: const EdgeInsets.all(15),
                         child: Container(
-                          padding: EdgeInsets.all(20),
+                          padding: const EdgeInsets.all(20),
                           height: MediaQuery.of(context).size.height * 0.13,
                           width: MediaQuery.of(context).size.width,
                           decoration: BoxDecoration(
@@ -162,7 +162,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
@@ -188,7 +188,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                       children: [
                                         TextButton(
                                           onPressed: () {},
-                                          child: Row(
+                                          child: const Row(
                                             children: [
                                               CircleAvatar(
                                                 radius: 25,
@@ -282,7 +282,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                               fallbackWidth: 135,
                                             ),
                                             Text(
-                                              "Meal name " + index.toString(),
+                                              "Meal name $index",
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   color: Colors.green),
@@ -330,7 +330,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Column(
+                                    const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceEvenly,
                                       children: [
@@ -356,7 +356,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                       children: [
                                         TextButton(
                                           onPressed: () {},
-                                          child: Row(
+                                          child: const Row(
                                             children: [
                                               CircleAvatar(
                                                 radius: 25,

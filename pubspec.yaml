@@ -43,6 +43,7 @@ dependencies:
   firebase_crashlytics: ^3.4.8
   flutter_localizations:
     sdk: flutter
+  http: ^0.13.6
 
 dev_dependencies:
   flutter_test:

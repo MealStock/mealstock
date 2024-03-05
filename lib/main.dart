@@ -71,7 +71,10 @@ class MyApp extends StatelessWidget {
       title: 'MealStock',
       theme: ThemeData(
         useMaterial3: true,
-        colorScheme: null, // TODO: add color scheme
+        colorScheme: const ColorScheme.light(
+          primary: Color(0xFF00A86B),
+          secondary: Color(0xFF00A86B),
+        ),
       ),
       initialRoute: '/',
       routes: {

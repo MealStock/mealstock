@@ -1,4 +1,4 @@
-import 'Photo.dart';
+import 'photo.dart';
 
 class Badge {
   int? id;

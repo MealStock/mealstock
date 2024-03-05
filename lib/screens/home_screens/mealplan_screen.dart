@@ -154,7 +154,7 @@ class _MealplanScreenState extends State<MealplanScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 const Text(
-                                  "       " + "Mealplan",
+                                  "       Mealplan",
                                   style: TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold,

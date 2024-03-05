@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:meal_stock/screens/home_screens/socials_screen.dart';
 import 'home_screen.dart';
@@ -6,8 +7,8 @@ import 'profil_screen.dart';
 import 'recipes_screen.dart';
 
 class NavigatorBar extends StatefulWidget {
-  const NavigatorBar({super.key, this.user});
-  final user;
+  const NavigatorBar({super.key, required this.user});
+  final User user;
   @override
   State<NavigatorBar> createState() => _NavigatorBarState();
 }
@@ -23,7 +24,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
     const SocialsScreen(),
     const RecipesScreen(),
     const MealplanScreen(),
-    ProfilScreen(),
+    const ProfilScreen(),
   ];
 
   void _onItemTapped(int index) {

@@ -1,4 +1,4 @@
-import 'Comment.dart';
+import 'comment.dart';
 
 class Photo {
   int? id;

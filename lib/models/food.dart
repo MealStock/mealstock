@@ -1,4 +1,4 @@
-import 'Photo.dart';
+import 'photo.dart';
 
 class Food {
   int? id;
@@ -36,9 +36,9 @@ enum Vitamins {
 }
 
 enum Taste {
-  Sweet,
-  Salty,
-  Sour,
-  Bitter,
-  Neutral,
+  sweet,
+  salty,
+  sour,
+  bitter,
+  neutral,
 }

@@ -31,13 +31,13 @@ class WelcomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const SignUpScreen()),
                 );
               },
-              child: Text('Sign up',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   minimumSize: Size(width * 0.8, 50.0)),
+              child: const Text('Sign up',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
             const Padding(padding: EdgeInsets.only(top: 29)),
             ElevatedButton(
@@ -47,13 +47,13 @@ class WelcomeScreen extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const LoginScreen()),
                 );
               },
-              child: Text('Log in',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10.0),
                   ),
                   minimumSize: Size(width * 0.8, 50.0)),
+              child: const Text('Log in',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             ),
           ],
         ),

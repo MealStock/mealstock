@@ -1,7 +1,7 @@
-import 'Badge.dart';
-import 'Comment.dart';
-import 'FoodRecipes.dart';
-import 'MealPlan.dart';
+import 'badge.dart';
+import 'comment.dart';
+import 'food_recipes.dart';
+import 'meal_plan.dart';
 import 'dart:convert';
 
 class NewUser {

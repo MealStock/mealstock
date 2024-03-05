@@ -1,7 +1,7 @@
-import 'Comment.dart';
-import 'FoodRecipes.dart';
-import 'Food.dart';
-import 'Photo.dart';
+import 'comment.dart';
+import 'food_recipes.dart';
+import 'food.dart';
+import 'photo.dart';
 
 class MealPlan {
   int? id;
