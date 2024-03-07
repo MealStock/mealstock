@@ -20,7 +20,7 @@ class Wrapper extends StatelessWidget {
               ? NavigatorBar(user: snapshot.data)
               : const WelcomeScreen();
         } else {
-          return const CircularProgressIndicator(); // Show a loading spinner while waiting for the stream
+          return const CircularProgressIndicator();
         }
       },
     );

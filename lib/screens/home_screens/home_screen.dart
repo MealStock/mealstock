@@ -17,170 +17,196 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           "Home",
-          style: TextStyle(fontSize: 26),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         actions: [
           IconButton(
-              onPressed: () {
-                auth.signOut();
-              },
-              icon: const Icon(Icons.logout))
+            onPressed: () {
+              auth.signOut();
+            },
+            icon: const Icon(Icons.logout_rounded),
+            color: const Color(0xff4e652a),
+          ),
         ],
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      // add logout button at the end of the appbar
-
       body: ListView(
         children: [
-          const Padding(padding: EdgeInsets.only(top: 40)),
-          const Text(
-            "  Current mealplan",
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+          const SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextButton(
-                onPressed: () {},
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  decoration: BoxDecoration(
-                    color: Colors.lightGreen,
-                    borderRadius: BorderRadius.circular(10), // Zaoblení rohů
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "       " "Mealplan",
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            Icons.delete,
-                            color: Colors.black,
-                          )),
-                    ],
-                  ),
-                )),
+            padding: EdgeInsets.symmetric(
+                horizontal: (MediaQuery.of(context).size.width * 0.1) / 2),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: Text(
+                "Current mealplan",
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: TextButton(
-                onPressed: () {},
-                child: Center(
-                    child: Container(
-                  width: MediaQuery.of(context).size.width * 0.6,
-                  height: MediaQuery.of(context).size.height * 0.12,
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(10), // Zaoblení rohů
+          const SizedBox(height: 10),
+          TextButton(
+            onPressed: () {},
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.9,
+              height: 75,
+              decoration: BoxDecoration(
+                color: const Color(0xffced4b2),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Row(
+                children: [
+                  const SizedBox(width: 20),
+                  Text(
+                    "Mealplan",
+                    style: Theme.of(context).textTheme.headlineMedium,
                   ),
-                  child: const Center(
-                      child: Text(
-                    "Shopping list",
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20),
-                  )),
-                ))),
-          ),
-          Padding(
-              padding: const EdgeInsets.all(10),
-              child: TextButton(
-                  onPressed: () {},
-                  child: Center(
-                      child: Container(
-                    width: MediaQuery.of(context).size.width * 0.9,
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    decoration: BoxDecoration(
-                      color: Colors.yellow,
-                      borderRadius: BorderRadius.circular(10), // Zaoblení rohů
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.open_in_new_rounded,
+                      color: Color(0xff4e652a),
                     ),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          const Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 15),
-                                child: Placeholder(
-                                  fallbackHeight: 100.0,
-                                  fallbackWidth: 120,
+                  ),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.delete_rounded,
+                      color: Color(0xff4e652a),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: Center(
+              child: Container(
+                height: 50,
+                width: 175,
+                decoration: BoxDecoration(
+                  color: const Color(0xffe7cb82),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Text(
+                    "Shopping list",
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          TextButton(
+            onPressed: () {},
+            child: Center(
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.9,
+                height: MediaQuery.of(context).size.height * 0.24,
+                decoration: BoxDecoration(
+                  color: const Color(0xffedd9a4),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 20),
+                              child: Container(
+                                width: 120,
+                                height: 100,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xffd9d9d9),
+                                  borderRadius: BorderRadius.circular(15),
+                                  border: Border.all(
+                                    color: const Color(0xff5e7933),
+                                    width: 1,
+                                  ),
                                 ),
                               ),
-                              Text(
-                                "Meal name",
-                                style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ],
-                          ),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              TextButton(
-                                onPressed: () {},
-                                child: const Row(
-                                  children: [
-                                    CircleAvatar(
-                                      radius: 25,
-                                    ),
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Text(
-                                      "User",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
-                                ),
-                              ),
-                              Row(
+                            ),
+                          ],
+                        ),
+                        const SizedBox(width: 20),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            TextButton(
+                              onPressed: () {},
+                              child: const Row(
                                 children: [
-                                  IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.star,
-                                      color: Colors.black,
+                                  CircleAvatar(
+                                    radius: 26,
+                                    backgroundColor: Color(0xff5e7933),
+                                    child: CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Color(0xffd9d9d9),
+                                      child: Text(""),
                                     ),
                                   ),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.chat,
-                                        color: Colors.black,
-                                      )),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                        Icons.bookmark,
-                                        color: Colors.black,
-                                      ))
+                                  SizedBox(width: 20),
+                                  Text(
+                                    "User",
+                                    style: TextStyle(
+                                        color: Color(0xff4e652a),
+                                        fontWeight: FontWeight.bold),
+                                  )
                                 ],
                               ),
-                              SizedBox(
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.5,
-                                  child: const Text(
-                                    "lorem ipsum nevim nechci to hledat",
-                                    style: TextStyle(color: Colors.black),
-                                    overflow: TextOverflow.ellipsis,
-                                  ))
-                            ],
-                          )
-                        ]),
-                  ))))
+                            ),
+                            Row(
+                              children: [
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.star_rounded,
+                                    color: Color(0xff4e652a),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.chat_rounded,
+                                    color: Color(0xff4e652a),
+                                  ),
+                                ),
+                                IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(
+                                    Icons.bookmark_rounded,
+                                    color: Color(0xff4e652a),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                    const Center(
+                      child: Text(
+                        "Meal name",
+                        style: TextStyle(
+                          color: Color(0xff4e652a),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

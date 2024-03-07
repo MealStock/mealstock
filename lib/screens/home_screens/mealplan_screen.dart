@@ -16,9 +16,9 @@ class _MealplanScreenState extends State<MealplanScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           "Mealplan",
-          style: TextStyle(fontSize: 26),
+          style: Theme.of(context).textTheme.headlineLarge,
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
@@ -31,156 +31,228 @@ class _MealplanScreenState extends State<MealplanScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(12), // Zaoblení rohů
-                    ),
-                    child: const Text(
+                onPressed: () {},
+                child: Container(
+                  width: 90,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffced4b2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Center(
+                    child: Text(
                       "Add",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff695b36),
+                      ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
               TextButton(
-                  onPressed: () {},
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 20, bottom: 30, top: 30),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(12), // Zaoblení rohů
-                    ),
-                    child: const Text(
+                onPressed: () {},
+                child: Container(
+                  width: 90,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffced4b2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Center(
+                    child: Text(
                       "Generate",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff695b36),
+                      ),
                     ),
-                  )),
-            ],
-          ),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-              padding: const EdgeInsets.only(
-                left: 75,
-                right: 75,
-              ),
-              child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                    color: Colors.yellow,
-                    borderRadius: BorderRadius.circular(12), // Zaoblení rohů
                   ),
-                  child: TextButton(
-                      onPressed: () {},
-                      child: const Text(
-                        "Filter",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 25,
-                            color: Colors.black),
-                      )))),
+                ),
+              )
+            ],
+          ),
           const SizedBox(
             height: 30,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      _currentPage - 1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                  child: Text(
-                    "Saved",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.green,
-                        backgroundColor:
-                            recommended ? Colors.transparent : Colors.yellow),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      _currentPage + 1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                  child: Text(
-                    "Yours",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.green,
-                        backgroundColor:
-                            recommended ? Colors.yellow : Colors.transparent),
-                  ))
-            ],
+          Center(
+            child: Container(
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              decoration: BoxDecoration(
+                color: const Color(0xffe7cb82),
+                borderRadius: BorderRadius.circular(12), // Zaoblení rohů
+              ),
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "Filter",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Color(0xff4e652a),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              final double buttonWidth = constraints.maxWidth / 2;
+              return Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.fastEaseInToSlowEaseOut,
+                    left: _currentPage == 0 ? 44 : buttonWidth + 46,
+                    width: _currentPage == 0 ? 95 : 88,
+                    height: 55,
+                    top: -3,
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Card(
+                        color: Color(0xffe4d1a1),
+                        child: SizedBox(
+                          height: 30,
+                          width: 100,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentPage = 0;
+                          });
+                          _pageController.animateToPage(
+                            _currentPage,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                        child: Text(
+                          "Saved",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentPage = 1;
+                          });
+                          _pageController.animateToPage(
+                            _currentPage,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                        child: Text(
+                          "Yours",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
           ),
           Expanded(
-              child: PageView(
-                  controller: _pageController,
-                  onPageChanged: (int page) {
-                    setState(() {
-                      _currentPage = page;
-                      recommended = !recommended;
-                    });
-                  },
-                  children: <Widget>[
+            child: PageView(
+              controller: _pageController,
+              onPageChanged: (int page) {
+                setState(() {
+                  _currentPage = page;
+                  recommended = !recommended;
+                });
+              },
+              children: <Widget>[
                 ListView(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: TextButton(
-                          onPressed: () {},
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            height: MediaQuery.of(context).size.height * 0.12,
-                            decoration: BoxDecoration(
-                              color: Colors.lightGreen,
-                              borderRadius:
-                                  BorderRadius.circular(10), // Zaoblení rohů
+                    TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 75,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffced4b2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 20),
+                            Text(
+                              "Mealplan",
+                              style: Theme.of(context).textTheme.headlineMedium,
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  "       Mealplan",
-                                  style: TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 18),
-                                ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                      Icons.delete,
-                                      color: Colors.black,
-                                    )),
-                              ],
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.open_in_new_rounded,
+                                color: Color(0xff4e652a),
+                              ),
                             ),
-                          )),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete_rounded,
+                                color: Color(0xff4e652a),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
-                Container(
-                  color: Colors.black,
-                  child: const Center(
-                      child: Text(
-                    "Jirkos tam nic neměl",
-                    style: TextStyle(color: Colors.white),
-                  )),
-                )
-              ]))
+                ListView(
+                  children: [
+                    TextButton(
+                      onPressed: () {},
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 75,
+                        decoration: BoxDecoration(
+                          color: const Color(0xffced4b2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Row(
+                          children: [
+                            const SizedBox(width: 20),
+                            Text(
+                              "Mealplan",
+                              style: Theme.of(context).textTheme.headlineMedium,
+                            ),
+                            const Spacer(),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.open_in_new_rounded,
+                                color: Color(0xff4e652a),
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {},
+                              icon: const Icon(
+                                Icons.delete_rounded,
+                                color: Color(0xff4e652a),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );

@@ -70,12 +70,23 @@ class MyApp extends StatelessWidget {
       ],
       title: 'MealStock',
       theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: const ColorScheme.light(
-          primary: Color(0xFF00A86B),
-          secondary: Color(0xFF00A86B),
-        ),
-      ),
+          useMaterial3: true,
+          colorScheme: const ColorScheme.light(
+            background: Color(0xfffffbf0),
+            primary: Color(0xffedd9a4),
+          ),
+          textTheme: const TextTheme(
+            headlineLarge: TextStyle(
+              fontSize: 26,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff4e652a),
+            ),
+            headlineMedium: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Color(0xff4e652a),
+            ),
+          )),
       initialRoute: '/',
       routes: {
         '/': (context) => const Wrapper(),
