@@ -9,9 +9,9 @@ class ProfilScreen extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text(
+          title: Text(
             "Me",
-            style: TextStyle(fontSize: 26),
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
@@ -21,26 +21,44 @@ class ProfilScreen extends StatelessWidget {
               height: 50,
             ),
             const CircleAvatar(
-              radius: 50.0,
-              backgroundImage: NetworkImage(
-                  "https://th.bing.com/th/id/R.ff0eaae0fc935172c93af920793b6fa2?rik=9kSqd2uVqZ4XaQ&riu=http%3a%2f%2fwww.contromet.in%2fimages%2fMichel-Dalle.jpg&ehk=aIDEQBDsOdtTUTfnKPRkEcYTD9vV6JplF%2bZ33Zh4Pc4%3d&risl=&pid=ImgRaw&r=0",
-                  scale: 0.1),
+              radius: 50,
+              backgroundColor: Color(0xff5e7933),
+              child: CircleAvatar(
+                radius: 49,
+                backgroundColor: Color(0xffd9d9d9),
+                child: Text(""),
+              ),
             ),
             const SizedBox(
               height: 20,
             ),
             const Text(
               "You",
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+                color: Color(0xff4e652a),
+              ),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
               height: 15,
             ),
-            const Text(
-              "Lorem impus\n \n ",
-              style: TextStyle(fontWeight: FontWeight.bold),
-              textAlign: TextAlign.center,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.6,
+              child: const Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Lorem ipsum dolor sit amet consectetur. Id ipsum ornare ut metus. Nec amet amet amet sit. Pellentesque arcu odio consequat integer nulla ultrices. Risus gravida placerat sed tortor vel nulla nibh.",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xff4e652a),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
             const SizedBox(
               height: 20,
@@ -52,7 +70,9 @@ class ProfilScreen extends StatelessWidget {
                     onPressed: () {},
                     child: const Text(
                       "Following \n 999",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(
+                        color: Color(0xff4e652a),
+                      ),
                     )),
                 const SizedBox(
                   height: 50,
@@ -61,11 +81,13 @@ class ProfilScreen extends StatelessWidget {
                     onPressed: () {},
                     child: const Text(
                       "Followers \n 999",
-                      style: TextStyle(color: Colors.black),
+                      style: TextStyle(
+                        color: Color(0xff4e652a),
+                      ),
                     )),
                 Container(
                     decoration: BoxDecoration(
-                      color: const Color.fromARGB(255, 1, 255, 64),
+                      color: const Color(0xffced4b2),
                       borderRadius: BorderRadius.circular(12), // Zaoblení rohů
                     ),
                     child: TextButton(
@@ -76,9 +98,10 @@ class ProfilScreen extends StatelessWidget {
                         child: const Text(
                           "Analytics",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                              color: Colors.black),
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
+                            color: Color(0xff4e652a),
+                          ),
                         ))),
               ],
             ),

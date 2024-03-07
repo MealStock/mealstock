@@ -44,29 +44,33 @@ class _NavigatorBarState extends State<NavigatorBar> {
     return Scaffold(
       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: const Color.fromARGB(249, 10, 250, 106),
-        fixedColor: const Color.fromARGB(248, 126, 115, 0),
-        unselectedItemColor: const Color.fromARGB(255, 50, 175, 0),
+        fixedColor: const Color(0xff6e8d3c),
+        unselectedItemColor: const Color(0xff6e8d3c),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: "Home",
+            backgroundColor: Color(0xffedd9a4),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.people),
             label: "Socials",
+            backgroundColor: Color(0xffedd9a4),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
             label: "Recipes",
+            backgroundColor: Color(0xffedd9a4),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month),
             label: "Mealplan",
+            backgroundColor: Color(0xffedd9a4),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: "Profil",
+            backgroundColor: Color(0xffedd9a4),
           ),
         ],
         currentIndex: _selectedIndex,

@@ -17,9 +17,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
     return Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          title: const Text(
+          title: Text(
             "Recipes",
-            style: TextStyle(fontSize: 26),
+            style: Theme.of(context).textTheme.headlineLarge,
           ),
           backgroundColor: Theme.of(context).colorScheme.primary,
         ),
@@ -31,77 +31,113 @@ class _RecipesScreenState extends State<RecipesScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: () {},
-                  child: Container(
-                    padding: const EdgeInsets.all(30),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(12), // Zaoblení rohů
-                    ),
-                    child: const Text(
+                onPressed: () {},
+                child: Container(
+                  width: 90,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffced4b2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Center(
+                    child: Text(
                       "Add",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff695b36),
+                      ),
                     ),
-                  )),
+                  ),
+                ),
+              ),
               TextButton(
-                  onPressed: () {},
-                  child: Container(
-                    padding: const EdgeInsets.only(
-                        left: 20, right: 20, bottom: 30, top: 30),
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(12), // Zaoblení rohů
-                    ),
-                    child: const Text(
+                onPressed: () {},
+                child: Container(
+                  width: 90,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffced4b2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: const Center(
+                    child: Text(
                       "Generate",
                       style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
+                        fontWeight: FontWeight.bold,
+                        color: Color(0xff695b36),
+                      ),
                     ),
-                  ))
+                  ),
+                ),
+              )
             ],
           ),
           const SizedBox(
             height: 30,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              TextButton(
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      _currentPage - 1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                  child: Text(
-                    "Saved",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.green,
-                        backgroundColor:
-                            recommended ? Colors.transparent : Colors.yellow),
-                  )),
-              TextButton(
-                  onPressed: () {
-                    _pageController.animateToPage(
-                      _currentPage + 1,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.ease,
-                    );
-                  },
-                  child: Text(
-                    "Yours",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.green,
-                        backgroundColor:
-                            recommended ? Colors.yellow : Colors.transparent),
-                  ))
-            ],
+          LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              final double buttonWidth = constraints.maxWidth / 2;
+              return Stack(
+                children: [
+                  AnimatedPositioned(
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.fastEaseInToSlowEaseOut,
+                    left: _currentPage == 0 ? 44 : buttonWidth + 46,
+                    width: _currentPage == 0 ? 95 : 88,
+                    height: 55,
+                    top: -3,
+                    child: const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Card(
+                        color: Color(0xffe4d1a1),
+                        child: SizedBox(
+                          height: 30,
+                          width: 100,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentPage = 0;
+                          });
+                          _pageController.animateToPage(
+                            _currentPage,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                        child: Text(
+                          "Saved",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          setState(() {
+                            _currentPage = 1;
+                          });
+                          _pageController.animateToPage(
+                            _currentPage,
+                            duration: const Duration(milliseconds: 300),
+                            curve: Curves.ease,
+                          );
+                        },
+                        child: Text(
+                          "Yours",
+                          style: Theme.of(context).textTheme.headlineMedium,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              );
+            },
           ),
           const SizedBox(
             height: 30,
@@ -118,128 +154,142 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   children: <Widget>[
                 ListView(
                   children: [
-                    Padding(
-                        padding: const EdgeInsets.only(
-                          left: 75,
-                          right: 75,
+                    Center(
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
+                        decoration: BoxDecoration(
+                          color: const Color(0xffe7cb82),
+                          borderRadius:
+                              BorderRadius.circular(12), // Zaoblení rohů
                         ),
-                        child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.yellow,
-                              borderRadius:
-                                  BorderRadius.circular(12), // Zaoblení rohů
+                        child: TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            "Filter",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                              color: Color(0xff4e652a),
                             ),
-                            child: TextButton(
-                                onPressed: () {},
-                                child: const Text(
-                                  "Filter",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 25,
-                                      color: Colors.black),
-                                )))),
+                          ),
+                        ),
+                      ),
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Center(
-                                child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height * 0.24,
-                              decoration: BoxDecoration(
-                                color: Colors.yellow,
-                                borderRadius:
-                                    BorderRadius.circular(10), // Zaoblení rohů
-                              ),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 15),
-                                          child: Placeholder(
-                                            fallbackHeight: 100.0,
-                                            fallbackWidth: 120,
+                    TextButton(
+                      onPressed: () {},
+                      child: Center(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: MediaQuery.of(context).size.height * 0.24,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffedd9a4),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
+                                        child: Container(
+                                          width: 120,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xffd9d9d9),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: const Color(0xff5e7933),
+                                              width: 1,
+                                            ),
                                           ),
                                         ),
-                                        Text(
-                                          "Meal name",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: const Row(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 25,
-                                              ),
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 10)),
-                                              Text(
-                                                "User",
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: const Row(
                                           children: [
-                                            IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.star,
-                                                color: Colors.black,
+                                            CircleAvatar(
+                                              radius: 26,
+                                              backgroundColor:
+                                                  Color(0xff5e7933),
+                                              child: CircleAvatar(
+                                                radius: 25,
+                                                backgroundColor:
+                                                    Color(0xffd9d9d9),
+                                                child: Text(""),
                                               ),
                                             ),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.chat,
-                                                  color: Colors.black,
-                                                )),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.bookmark,
-                                                  color: Colors.black,
-                                                ))
+                                            SizedBox(width: 20),
+                                            Text(
+                                              "User",
+                                              style: TextStyle(
+                                                  color: Color(0xff4e652a),
+                                                  fontWeight: FontWeight.bold),
+                                            )
                                           ],
                                         ),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.5,
-                                            child: const Text(
-                                              "lorem ipsum nevim nechci to hledat",
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                              overflow: TextOverflow.ellipsis,
-                                            ))
-                                      ],
-                                    )
-                                  ]),
-                            ))))
+                                      ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.star_rounded,
+                                              color: Color(0xff4e652a),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.chat_rounded,
+                                              color: Color(0xff4e652a),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.bookmark_rounded,
+                                              color: Color(0xff4e652a),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const Center(
+                                child: Text(
+                                  "Meal name",
+                                  style: TextStyle(
+                                    color: Color(0xff4e652a),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
                 ListView(
@@ -247,105 +297,118 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Padding(
-                        padding: const EdgeInsets.all(10),
-                        child: TextButton(
-                            onPressed: () {},
-                            child: Center(
-                                child: Container(
-                              width: MediaQuery.of(context).size.width * 0.9,
-                              height: MediaQuery.of(context).size.height * 0.24,
-                              decoration: BoxDecoration(
-                                color: Colors.yellow,
-                                borderRadius:
-                                    BorderRadius.circular(10), // Zaoblení rohů
-                              ),
-                              child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    const Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.only(left: 15),
-                                          child: Placeholder(
-                                            fallbackHeight: 100.0,
-                                            fallbackWidth: 120,
+                    TextButton(
+                      onPressed: () {},
+                      child: Center(
+                        child: Container(
+                          width: MediaQuery.of(context).size.width * 0.9,
+                          height: MediaQuery.of(context).size.height * 0.24,
+                          decoration: BoxDecoration(
+                            color: const Color(0xffedd9a4),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Row(
+                                children: [
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(left: 20),
+                                        child: Container(
+                                          width: 120,
+                                          height: 100,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xffd9d9d9),
+                                            borderRadius:
+                                                BorderRadius.circular(15),
+                                            border: Border.all(
+                                              color: const Color(0xff5e7933),
+                                              width: 1,
+                                            ),
                                           ),
                                         ),
-                                        Text(
-                                          "Meal name",
-                                          style: TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        TextButton(
-                                          onPressed: () {},
-                                          child: const Row(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 25,
-                                              ),
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      left: 10)),
-                                              Text(
-                                                "User",
-                                                style: TextStyle(
-                                                    color: Colors.black,
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                              )
-                                            ],
-                                          ),
-                                        ),
-                                        Row(
+                                      ),
+                                    ],
+                                  ),
+                                  const SizedBox(width: 20),
+                                  Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      TextButton(
+                                        onPressed: () {},
+                                        child: const Row(
                                           children: [
-                                            IconButton(
-                                              onPressed: () {},
-                                              icon: const Icon(
-                                                Icons.star,
-                                                color: Colors.black,
+                                            CircleAvatar(
+                                              radius: 26,
+                                              backgroundColor:
+                                                  Color(0xff5e7933),
+                                              child: CircleAvatar(
+                                                radius: 25,
+                                                backgroundColor:
+                                                    Color(0xffd9d9d9),
+                                                child: Text(""),
                                               ),
                                             ),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.chat,
-                                                  color: Colors.black,
-                                                )),
-                                            IconButton(
-                                                onPressed: () {},
-                                                icon: const Icon(
-                                                  Icons.bookmark,
-                                                  color: Colors.black,
-                                                ))
+                                            SizedBox(width: 20),
+                                            Text(
+                                              "User",
+                                              style: TextStyle(
+                                                  color: Color(0xff4e652a),
+                                                  fontWeight: FontWeight.bold),
+                                            )
                                           ],
                                         ),
-                                        SizedBox(
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.5,
-                                            child: const Text(
-                                              "lorem ipsum nevim nechci to hledat",
-                                              style: TextStyle(
-                                                  color: Colors.black),
-                                              overflow: TextOverflow.ellipsis,
-                                            ))
-                                      ],
-                                    )
-                                  ]),
-                            ))))
+                                      ),
+                                      Row(
+                                        children: [
+                                          IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.star_rounded,
+                                              color: Color(0xff4e652a),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.chat_rounded,
+                                              color: Color(0xff4e652a),
+                                            ),
+                                          ),
+                                          IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(
+                                              Icons.bookmark_rounded,
+                                              color: Color(0xff4e652a),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                              const Center(
+                                child: Text(
+                                  "Meal name",
+                                  style: TextStyle(
+                                    color: Color(0xff4e652a),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 )
               ]))
