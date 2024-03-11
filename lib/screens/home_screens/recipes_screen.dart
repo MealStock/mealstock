@@ -7,10 +7,32 @@ class RecipesScreen extends StatefulWidget {
 }
 
 class _RecipesScreenState extends State<RecipesScreen> {
-  bool recommended = false;
-
   final PageController _pageController = PageController();
-  int _currentPage = 0;
+
+  final GlobalKey _followingKey = GlobalKey();
+  final GlobalKey _recommendedKey = GlobalKey();
+
+  double _buttonPosition = 0;
+  double _buttonWidth = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _buttonPosition = _getButtonPosition(
+            _pageController.page == 0 ? _followingKey : _recommendedKey);
+        _buttonWidth = _pageController.page == 0 ? 125 : 175;
+      });
+    });
+  }
+
+  double _getButtonPosition(GlobalKey key) {
+    final RenderBox renderBox =
+        key.currentContext!.findRenderObject() as RenderBox;
+    final position = renderBox.localToGlobal(Offset.zero);
+    return position.dx;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,69 +97,66 @@ class _RecipesScreenState extends State<RecipesScreen> {
           const SizedBox(
             height: 30,
           ),
-          LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              final double buttonWidth = constraints.maxWidth / 2;
-              return Stack(
-                children: [
-                  AnimatedPositioned(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.fastEaseInToSlowEaseOut,
-                    left: _currentPage == 0 ? 44 : buttonWidth + 46,
-                    width: _currentPage == 0 ? 95 : 88,
-                    height: 55,
-                    top: -3,
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        color: Color(0xffe4d1a1),
-                        child: SizedBox(
-                          height: 30,
-                          width: 100,
-                        ),
-                      ),
+          Stack(
+            children: [
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.fastEaseInToSlowEaseOut,
+                left: _buttonPosition - 8,
+                width: _buttonWidth,
+                height: 55,
+                top: -3,
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Card(
+                    color: Color(0xffe4d1a1),
+                    child: SizedBox(
+                      height: 30,
+                      width: 100,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _currentPage = 0;
-                          });
-                          _pageController.animateToPage(
-                            _currentPage,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                        child: Text(
-                          "Saved",
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _currentPage = 1;
-                          });
-                          _pageController.animateToPage(
-                            _currentPage,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                        child: Text(
-                          "Yours",
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                      ),
-                    ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _buttonPosition = _getButtonPosition(_followingKey);
+                        _buttonWidth = 95;
+                      });
+                      _pageController.animateToPage(
+                        0,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease,
+                      );
+                    },
+                    child: Text(
+                      "Saved",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        _buttonPosition = _getButtonPosition(_recommendedKey);
+                        _buttonWidth = 88;
+                      });
+                      _pageController.animateToPage(
+                        1,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease,
+                      );
+                    },
+                    child: Text(
+                      "Yours",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
                   ),
                 ],
-              );
-            },
+              ),
+            ],
           ),
           const SizedBox(
             height: 30,
@@ -147,8 +166,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   controller: _pageController,
                   onPageChanged: (int page) {
                     setState(() {
-                      _currentPage = page;
-                      recommended = !recommended;
+                      _buttonPosition = _getButtonPosition(
+                          page == 0 ? _followingKey : _recommendedKey);
+                      _buttonWidth = page == 0 ? 95 : 88;
                     });
                   },
                   children: <Widget>[

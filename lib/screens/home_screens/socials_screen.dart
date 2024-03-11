@@ -7,10 +7,32 @@ class SocialsScreen extends StatefulWidget {
 }
 
 class _SocialsScreenState extends State<SocialsScreen> {
-  bool recommended = false;
-
   final PageController _pageController = PageController();
-  int _currentPage = 0;
+
+  final GlobalKey _followingKey = GlobalKey();
+  final GlobalKey _recommendedKey = GlobalKey();
+
+  double _buttonPosition = 0;
+  double _buttonWidth = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      setState(() {
+        _buttonPosition = _getButtonPosition(
+            _pageController.page == 0 ? _followingKey : _recommendedKey);
+        _buttonWidth = _pageController.page == 0 ? 125 : 175;
+      });
+    });
+  }
+
+  double _getButtonPosition(GlobalKey key) {
+    final RenderBox renderBox =
+        key.currentContext!.findRenderObject() as RenderBox;
+    final position = renderBox.localToGlobal(Offset.zero);
+    return position.dx;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,78 +47,77 @@ class _SocialsScreenState extends State<SocialsScreen> {
       ),
       body: Column(
         children: [
-          LayoutBuilder(
-            builder: (BuildContext context, BoxConstraints constraints) {
-              final double buttonWidth = constraints.maxWidth / 2;
-              return Stack(
-                children: [
-                  AnimatedPositioned(
-                    duration: const Duration(milliseconds: 300),
-                    curve: Curves.fastEaseInToSlowEaseOut,
-                    left: _currentPage == 0 ? 16 : buttonWidth - 8,
-                    width: _currentPage == 0 ? 125 : 172,
-                    height: 55,
-                    top: -3,
-                    child: const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Card(
-                        color: Color(
-                            0xffe4d1a1), // Change this to your desired color
-                        child: SizedBox(
-                          height: 30,
-                          width: 100,
-                        ),
-                      ),
+          Stack(
+            children: [
+              AnimatedPositioned(
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.fastEaseInToSlowEaseOut,
+                left: _buttonPosition - 8,
+                width: _buttonWidth,
+                height: 55,
+                top: -3,
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Card(
+                    color: Color(0xffe4d1a1),
+                    child: SizedBox(
+                      height: 30,
+                      width: 100,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _currentPage = 0;
-                          });
-                          _pageController.animateToPage(
-                            _currentPage,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                        child: Text(
-                          "Following",
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                      ),
-                      TextButton(
-                        onPressed: () {
-                          setState(() {
-                            _currentPage = 1;
-                          });
-                          _pageController.animateToPage(
-                            _currentPage,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.ease,
-                          );
-                        },
-                        child: Text(
-                          "Recommended",
-                          style: Theme.of(context).textTheme.headlineMedium,
-                        ),
-                      ),
-                    ],
+                ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  TextButton(
+                    key: _followingKey,
+                    onPressed: () {
+                      setState(() {
+                        _buttonPosition = _getButtonPosition(_followingKey);
+                        _buttonWidth = 125;
+                      });
+                      _pageController.animateToPage(
+                        0,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease,
+                      );
+                    },
+                    child: Text(
+                      "Following",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
+                  ),
+                  TextButton(
+                    key: _recommendedKey,
+                    onPressed: () {
+                      setState(() {
+                        _buttonPosition = _getButtonPosition(_recommendedKey);
+                        _buttonWidth = 175;
+                      });
+                      _pageController.animateToPage(
+                        1,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease,
+                      );
+                    },
+                    child: Text(
+                      "Recommended",
+                      style: Theme.of(context).textTheme.headlineMedium,
+                    ),
                   ),
                 ],
-              );
-            },
+              ),
+            ],
           ),
           Expanded(
             child: PageView(
               controller: _pageController,
               onPageChanged: (int page) {
                 setState(() {
-                  _currentPage = page;
-                  recommended = !recommended;
+                  _buttonPosition = _getButtonPosition(
+                      page == 0 ? _followingKey : _recommendedKey);
+                  _buttonWidth = page == 0 ? 125 : 175;
                 });
               },
               children: <Widget>[
