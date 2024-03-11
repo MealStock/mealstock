@@ -22,7 +22,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
       setState(() {
         _buttonPosition = _getButtonPosition(
             _pageController.page == 0 ? _followingKey : _recommendedKey);
-        _buttonWidth = _pageController.page == 0 ? 125 : 175;
+        _buttonWidth = _pageController.page == 0 ? 95 : 88;
       });
     });
   }
@@ -121,6 +121,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextButton(
+                    key: _followingKey,
                     onPressed: () {
                       setState(() {
                         _buttonPosition = _getButtonPosition(_followingKey);
@@ -138,6 +139,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     ),
                   ),
                   TextButton(
+                    key: _recommendedKey,
                     onPressed: () {
                       setState(() {
                         _buttonPosition = _getButtonPosition(_recommendedKey);

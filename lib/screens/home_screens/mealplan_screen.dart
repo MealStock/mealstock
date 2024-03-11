@@ -22,7 +22,7 @@ class _MealplanScreenState extends State<MealplanScreen> {
       setState(() {
         _buttonPosition = _getButtonPosition(
             _pageController.page == 0 ? _followingKey : _recommendedKey);
-        _buttonWidth = _pageController.page == 0 ? 125 : 175;
+        _buttonWidth = _pageController.page == 0 ? 95 : 88;
       });
     });
   }
@@ -103,7 +103,7 @@ class _MealplanScreenState extends State<MealplanScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 40),
               decoration: BoxDecoration(
                 color: const Color(0xffe7cb82),
-                borderRadius: BorderRadius.circular(12), // Zaoblení rohů
+                borderRadius: BorderRadius.circular(12),
               ),
               child: TextButton(
                 onPressed: () {},
@@ -126,7 +126,7 @@ class _MealplanScreenState extends State<MealplanScreen> {
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.fastEaseInToSlowEaseOut,
-                left: _buttonPosition,
+                left: _buttonPosition - 8,
                 width: _buttonWidth,
                 height: 55,
                 top: -3,
@@ -145,6 +145,7 @@ class _MealplanScreenState extends State<MealplanScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
                   TextButton(
+                    key: _followingKey,
                     onPressed: () {
                       setState(() {
                         _buttonPosition = _getButtonPosition(_followingKey);
@@ -162,6 +163,7 @@ class _MealplanScreenState extends State<MealplanScreen> {
                     ),
                   ),
                   TextButton(
+                    key: _recommendedKey,
                     onPressed: () {
                       setState(() {
                         _buttonPosition = _getButtonPosition(_recommendedKey);
