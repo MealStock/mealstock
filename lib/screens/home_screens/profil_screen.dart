@@ -33,7 +33,7 @@ class ProfilScreen extends StatelessWidget {
               height: 20,
             ),
             const Text(
-              "You",
+              "Me",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
@@ -69,7 +69,7 @@ class ProfilScreen extends StatelessWidget {
                 TextButton(
                     onPressed: () {},
                     child: const Text(
-                      "Following \n 999",
+                      "Following \n   999",
                       style: TextStyle(
                         color: Color(0xff4e652a),
                       ),
@@ -80,7 +80,7 @@ class ProfilScreen extends StatelessWidget {
                 TextButton(
                     onPressed: () {},
                     child: const Text(
-                      "Followers \n 999",
+                      "Followers \n   999",
                       style: TextStyle(
                         color: Color(0xff4e652a),
                       ),

@@ -69,7 +69,7 @@ class _NavigatorBarState extends State<NavigatorBar> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: "Profil",
+            label: "Profile",
             backgroundColor: Color(0xffedd9a4),
           ),
         ],
