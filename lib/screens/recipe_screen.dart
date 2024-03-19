@@ -13,6 +13,13 @@ class _MyWidgetState extends State<RecipeScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_rounded),
+          color: const Color(0xff4e652a),
+        ),
         title: Text(
           "Recipe",
           style: Theme.of(context).textTheme.headlineLarge,
