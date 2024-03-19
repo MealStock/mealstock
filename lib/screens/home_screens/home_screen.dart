@@ -102,7 +102,9 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.pushNamed(context, '/recipe');
+            },
             child: Center(
               child: Container(
                 width: MediaQuery.of(context).size.width * 0.9,

@@ -220,7 +220,9 @@ class _SocialsScreenState extends State<SocialsScreen> {
                     ),
                     const SizedBox(height: 20),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/recipe');
+                      },
                       child: Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.9,
@@ -349,7 +351,9 @@ class _SocialsScreenState extends State<SocialsScreen> {
                             itemCount: 50,
                             itemBuilder: (context, index) {
                               return TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.pushNamed(context, '/recipe');
+                                },
                                 child: Container(
                                     padding: const EdgeInsets.all(20),
                                     decoration: BoxDecoration(
@@ -442,7 +446,9 @@ class _SocialsScreenState extends State<SocialsScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pushNamed(context, '/recipe');
+                      },
                       child: Center(
                         child: Container(
                           width: MediaQuery.of(context).size.width * 0.9,
