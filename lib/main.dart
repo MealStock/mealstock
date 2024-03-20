@@ -1,3 +1,4 @@
+import 'package:meal_stock/screens/generate_recipe_screen.dart';
 import 'package:meal_stock/screens/recipe_screen.dart';
 import 'package:meal_stock/services/auth.dart';
 import 'package:flutter/foundation.dart';
@@ -93,6 +94,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const Wrapper(),
         '/login': (context) => const WelcomeScreen(),
         '/recipe': (context) => const RecipeScreen(),
+        '/generate': (context) => const GenerateRecipeScreen(),
       },
     );
   }

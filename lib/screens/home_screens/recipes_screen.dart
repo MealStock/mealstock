@@ -73,7 +73,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/generate');
+                },
                 child: Container(
                   width: 90,
                   height: 45,
