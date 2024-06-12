@@ -146,16 +146,26 @@ class _MyWidgetState extends State<RecipeScreen> {
                   ),
                 ],
               ),
-              const Column(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CircleAvatar(
-                    radius: 30,
-                    backgroundColor: Color(0xff5e7933),
-                    child: CircleAvatar(
-                      radius: 29,
-                      backgroundColor: Color(0xffd9d9d9),
-                      child: Text(""),
+                  Container(
+                    width: 60, // Diameter of the outer circle
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: Color(0xff5e7933),
+                      shape: BoxShape.circle,
+                    ),
+                    child: ClipOval(
+                      child: Container(
+                        width: 58, // Diameter of the inner circle
+                        height: 58,
+                        color: Color(0xffd9d9d9),
+                        child: Image.asset(
+                          "images/Stanley.jpg", // Replace with your asset image path
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
                   ),
                   Text(
@@ -177,7 +187,11 @@ class _MyWidgetState extends State<RecipeScreen> {
             child: Column(
               children: [
                 Text("Ingredients:"),
-                Text("lorem soblum"),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis sem odio, sed aliquam lacus tristique non. Nunc non imperdiet nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus luctus vel erat id semper. Pellentesque erat eros, porta vel magna sit amet, suscipit elementum sem. Suspendisse scelerisque porta luctus. Mauris lectus mi, fringilla eget imperdiet et, tristique in ligula. Nullam at elit quis tellus placerat mollis in vehicula eros. Morbi placerat egestas laoreet. Mauris feugiat facilisis mi vitae faucibus. Maecenas fermentum fermentum ultricies."),
+                ),
               ],
             ),
           ),

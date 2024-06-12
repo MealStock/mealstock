@@ -74,6 +74,12 @@ flutter:
     - images/logo_full.png
     - images/logo_rbg.png
     - images/google.png
+    - images/Stanley.jpg
+    - images/butterchicken.jpeg
+    - images/ribeyesteak.jpeg
+    - images/spaghetti.JPG
+    - images/pizza.jpeg
+    - images/fishandchips.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
