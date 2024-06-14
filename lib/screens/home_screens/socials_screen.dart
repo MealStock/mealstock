@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class SocialsScreen extends StatefulWidget {
   const SocialsScreen({super.key});
@@ -163,7 +164,8 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                     backgroundColor: Color(0xff5e7933),
                                     child: CircleAvatar(
                                       radius: 25,
-                                      backgroundColor: Color(0xffd9d9d9),
+                                      backgroundImage:
+                                          AssetImage("images/Stanley.jpg"),
                                       child:
                                           Text("" /*(index - 1).toString()*/),
                                     ),
@@ -266,7 +268,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                     children: [
                                       TextButton(
                                         onPressed: () {},
-                                        child: const Row(
+                                        child: Row(
                                           children: [
                                             CircleAvatar(
                                               radius: 26,
@@ -276,7 +278,8 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                                 radius: 25,
                                                 backgroundColor:
                                                     Color(0xffd9d9d9),
-                                                child: Text(""),
+                                                backgroundImage: AssetImage(
+                                                    "images/Stanley.jpg"),
                                               ),
                                             ),
                                             SizedBox(width: 20),
@@ -394,7 +397,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              const Positioned(
+                                              Positioned(
                                                 bottom: 0,
                                                 right: 5,
                                                 child: CircleAvatar(
@@ -403,8 +406,8 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                                       Color(0xff5e7933),
                                                   child: CircleAvatar(
                                                     radius: 17,
-                                                    backgroundColor:
-                                                        Color(0xffd9d9d9),
+                                                    backgroundImage: AssetImage(
+                                                        "images/Stanley.jpg"),
                                                     child: Text(""),
                                                   ),
                                                 ),
