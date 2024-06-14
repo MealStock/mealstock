@@ -268,7 +268,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                     children: [
                                       TextButton(
                                         onPressed: () {},
-                                        child: Row(
+                                        child: const Row(
                                           children: [
                                             CircleAvatar(
                                               radius: 26,
@@ -397,7 +397,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                                   ),
                                                 ),
                                               ),
-                                              Positioned(
+                                              const Positioned(
                                                 bottom: 0,
                                                 right: 5,
                                                 child: CircleAvatar(
