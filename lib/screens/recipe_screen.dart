@@ -163,7 +163,7 @@ class _MyWidgetState extends State<RecipeScreen> {
                         height: 58,
                         color: Color(0xffd9d9d9),
                         child: Image.asset(
-                          "images/Stanley.jpg", // Replace with your asset image path
+                          "images/defaultprofile.jpg", // Replace with your asset image path
                           fit: BoxFit.cover,
                         ),
                       ),
