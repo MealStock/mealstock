@@ -292,6 +292,7 @@ class _MyWidgetState extends State<RecipeScreen> {
                                             backgroundColor: Color(0xffd9d9d9),
                                             backgroundImage: AssetImage(
                                               "images/defaultprofile.jpg",
+                                            ),
                                           ),
                                         ),
                                       )
