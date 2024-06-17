@@ -164,8 +164,8 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                     backgroundColor: Color(0xff5e7933),
                                     child: CircleAvatar(
                                       radius: 25,
-                                      backgroundImage:
-                                          AssetImage("images/Stanley.jpg"),
+                                      backgroundImage: AssetImage(
+                                          "images/defaultprofile.jpg"),
                                       child:
                                           Text("" /*(index - 1).toString()*/),
                                     ),
@@ -279,7 +279,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                                 backgroundColor:
                                                     Color(0xffd9d9d9),
                                                 backgroundImage: AssetImage(
-                                                    "images/Stanley.jpg"),
+                                                    "images/defaultprofile.jpg"),
                                               ),
                                             ),
                                             SizedBox(width: 20),
@@ -407,7 +407,7 @@ class _SocialsScreenState extends State<SocialsScreen> {
                                                   child: CircleAvatar(
                                                     radius: 17,
                                                     backgroundImage: AssetImage(
-                                                        "images/Stanley.jpg"),
+                                                        "images/defaultprofile.jpg"),
                                                     child: Text(""),
                                                   ),
                                                 ),
