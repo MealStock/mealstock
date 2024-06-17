@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class RecipeScreen extends StatefulWidget {
   const RecipeScreen({super.key});
@@ -289,7 +290,8 @@ class _MyWidgetState extends State<RecipeScreen> {
                                           child: CircleAvatar(
                                             radius: 17,
                                             backgroundColor: Color(0xffd9d9d9),
-                                            child: Text(""),
+                                            backgroundImage: AssetImage(
+                                              "images/defaultprofile.jpg",
                                           ),
                                         ),
                                       )

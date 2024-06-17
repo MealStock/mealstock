@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meal_stock/services/server.dart';
 
 class ProfilScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class ProfilScreen extends StatelessWidget {
               child: CircleAvatar(
                 radius: 49,
                 backgroundColor: Color(0xffd9d9d9),
-                child: Text(""),
+                backgroundImage: AssetImage("images/defaultprofile.jpg"),
               ),
             ),
             const SizedBox(

@@ -259,7 +259,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                                 radius: 25,
                                                 backgroundColor:
                                                     Color(0xffd9d9d9),
-                                                child: Text(""),
+                                                backgroundImage: AssetImage(
+                                                  "images/defaultprofile.jpg",
+                                                ),
                                               ),
                                             ),
                                             SizedBox(width: 20),
