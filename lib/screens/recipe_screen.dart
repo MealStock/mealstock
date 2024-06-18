@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class RecipeScreen extends StatefulWidget {
-  const RecipeScreen({super.key});
+  final String? mealName;
+  final String? ingredients;
+  const RecipeScreen({super.key, this.mealName, this.ingredients});
 
   @override
   State<RecipeScreen> createState() => _MyWidgetState();
@@ -64,10 +66,10 @@ class _MyWidgetState extends State<RecipeScreen> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  const Center(
+                  Center(
                     child: Text(
-                      "Meal name",
-                      style: TextStyle(
+                      widget.mealName ?? "Meal name",
+                      style: const TextStyle(
                         color: Color(0xff4e652a),
                         fontWeight: FontWeight.bold,
                         fontSize: 34,
@@ -184,23 +186,25 @@ class _MyWidgetState extends State<RecipeScreen> {
           const SizedBox(
             height: 30,
           ),
-          const Center(
+          Center(
             child: Column(
               children: [
-                Text("Ingredients:"),
+                const Text("Ingredients:"),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis sem odio, sed aliquam lacus tristique non. Nunc non imperdiet nisi. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus luctus vel erat id semper. Pellentesque erat eros, porta vel magna sit amet, suscipit elementum sem. Suspendisse scelerisque porta luctus. Mauris lectus mi, fringilla eget imperdiet et, tristique in ligula. Nullam at elit quis tellus placerat mollis in vehicula eros. Morbi placerat egestas laoreet. Mauris feugiat facilisis mi vitae faucibus. Maecenas fermentum fermentum ultricies."),
+                    widget.ingredients ?? "Ingredients",
+                    style: const TextStyle(
+                      color: Color(0xff4e652a),
+                      fontSize: 16,
+                    ),
+                  ),
                 ),
               ],
             ),
           ),
           const SizedBox(
             height: 18,
-          ),
-          const Center(
-            child: Text("lorem soblum"),
           ),
           const SizedBox(
             height: 30,

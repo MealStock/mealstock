@@ -1,3 +1,5 @@
+import 'package:meal_stock/screens/add_recipe_screen.dart';
+import 'package:meal_stock/screens/recipe_screen.dart';
 import 'package:flutter/material.dart';
 
 class RecipesScreen extends StatefulWidget {
@@ -14,6 +16,9 @@ class _RecipesScreenState extends State<RecipesScreen> {
 
   double _buttonPosition = 0;
   double _buttonWidth = 0;
+
+  List<String> mealNames = [];
+  List<String> mealIngredients = [];
 
   @override
   void initState() {
@@ -53,7 +58,20 @@ class _RecipesScreenState extends State<RecipesScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  // push screen when user can enter meal name and meal ingredients
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return AddRecipeScreen(
+                          ingredients: mealIngredients,
+                          mealNames: mealNames,
+                        );
+                      },
+                    ),
+                  ).then((value) => setState(() {}));
+                },
                 child: Container(
                   width: 90,
                   height: 45,
@@ -327,7 +345,17 @@ class _RecipesScreenState extends State<RecipesScreen> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/recipe');
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
+                          return RecipeScreen(
+                            mealName: mealNames.isEmpty
+                                ? null
+                                : mealNames[mealNames.length - 1],
+                            ingredients: mealIngredients.isEmpty
+                                ? null
+                                : mealIngredients[mealIngredients.length - 1],
+                          );
+                        }));
                       },
                       child: Center(
                         child: Container(
@@ -425,10 +453,12 @@ class _RecipesScreenState extends State<RecipesScreen> {
                                   )
                                 ],
                               ),
-                              const Center(
+                              Center(
                                 child: Text(
-                                  "Meal name",
-                                  style: TextStyle(
+                                  mealNames.isEmpty
+                                      ? "Meal name"
+                                      : mealNames[mealNames.length - 1],
+                                  style: const TextStyle(
                                     color: Color(0xff4e652a),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 20,

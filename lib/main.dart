@@ -1,5 +1,6 @@
 import 'package:meal_stock/screens/generate_recipe_screen.dart';
 import 'package:meal_stock/screens/recipe_screen.dart';
+import 'package:meal_stock/screens/add_recipe_screen.dart';
 import 'package:meal_stock/services/auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
