@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
 import 'package:meal_stock/screens/add_recipe_screen.dart';
 import 'package:meal_stock/screens/recipe_screen.dart';
 import 'package:flutter/material.dart';
@@ -339,6 +341,7 @@ class _RecipesScreenState extends State<RecipesScreen> {
                   ],
                 ),
                 ListView(
+                  // disable scrolling
                   children: [
                     const SizedBox(
                       height: 20,
@@ -348,130 +351,141 @@ class _RecipesScreenState extends State<RecipesScreen> {
                         Navigator.push(context,
                             MaterialPageRoute(builder: (context) {
                           return RecipeScreen(
-                            mealName: mealNames.isEmpty
-                                ? null
-                                : mealNames[mealNames.length - 1],
-                            ingredients: mealIngredients.isEmpty
-                                ? null
-                                : mealIngredients[mealIngredients.length - 1],
+                            mealName: mealNames[mealNames.length - 1],
+                            ingredients:
+                                mealIngredients[mealIngredients.length - 1],
                           );
                         }));
                       },
-                      child: Center(
-                        child: Container(
-                          width: MediaQuery.of(context).size.width * 0.9,
-                          height: MediaQuery.of(context).size.height * 0.24,
-                          decoration: BoxDecoration(
-                            color: const Color(0xffedd9a4),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Row(
-                                children: [
-                                  Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Padding(
-                                        padding:
-                                            const EdgeInsets.only(left: 20),
-                                        child: Container(
-                                          width: 120,
-                                          height: 100,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xffd9d9d9),
-                                            borderRadius:
-                                                BorderRadius.circular(15),
-                                            border: Border.all(
-                                              color: const Color(0xff5e7933),
-                                              width: 1,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    ],
+                      child: Column(
+                        children: [
+                          for (int i = 0; i < mealNames.length; i++)
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: Container(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.24,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xffedd9a4),
+                                    borderRadius: BorderRadius.circular(10),
                                   ),
-                                  const SizedBox(width: 20),
-                                  Column(
+                                  child: Column(
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      TextButton(
-                                        onPressed: () {},
-                                        child: const Row(
-                                          children: [
-                                            CircleAvatar(
-                                              radius: 26,
-                                              backgroundColor:
-                                                  Color(0xff5e7933),
-                                              child: CircleAvatar(
-                                                radius: 25,
-                                                backgroundColor:
-                                                    Color(0xffd9d9d9),
-                                                backgroundImage: AssetImage(
-                                                    "images/defaultprofile.jpg"),
-                                              ),
-                                            ),
-                                            SizedBox(width: 20),
-                                            Text(
-                                              "User",
-                                              style: TextStyle(
-                                                  color: Color(0xff4e652a),
-                                                  fontWeight: FontWeight.bold),
-                                            )
-                                          ],
-                                        ),
-                                      ),
                                       Row(
                                         children: [
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.star_rounded,
-                                              color: Color(0xff4e652a),
-                                            ),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 20),
+                                                child: Container(
+                                                  width: 120,
+                                                  height: 100,
+                                                  decoration: BoxDecoration(
+                                                    color:
+                                                        const Color(0xffd9d9d9),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            15),
+                                                    border: Border.all(
+                                                      color: const Color(
+                                                          0xff5e7933),
+                                                      width: 1,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
                                           ),
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.chat_rounded,
-                                              color: Color(0xff4e652a),
-                                            ),
-                                          ),
-                                          IconButton(
-                                            onPressed: () {},
-                                            icon: const Icon(
-                                              Icons.bookmark_rounded,
-                                              color: Color(0xff4e652a),
-                                            ),
-                                          ),
+                                          const SizedBox(width: 20),
+                                          Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceEvenly,
+                                            children: [
+                                              TextButton(
+                                                onPressed: () {},
+                                                child: const Row(
+                                                  children: [
+                                                    CircleAvatar(
+                                                      radius: 26,
+                                                      backgroundColor:
+                                                          Color(0xff5e7933),
+                                                      child: CircleAvatar(
+                                                        radius: 25,
+                                                        backgroundColor:
+                                                            Color(0xffd9d9d9),
+                                                        backgroundImage: AssetImage(
+                                                            "images/defaultprofile.jpg"),
+                                                      ),
+                                                    ),
+                                                    SizedBox(width: 20),
+                                                    Text(
+                                                      "User",
+                                                      style: TextStyle(
+                                                          color:
+                                                              Color(0xff4e652a),
+                                                          fontWeight:
+                                                              FontWeight.bold),
+                                                    )
+                                                  ],
+                                                ),
+                                              ),
+                                              Row(
+                                                children: [
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                      Icons.star_rounded,
+                                                      color: Color(0xff4e652a),
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                      Icons.chat_rounded,
+                                                      color: Color(0xff4e652a),
+                                                    ),
+                                                  ),
+                                                  IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(
+                                                      Icons.bookmark_rounded,
+                                                      color: Color(0xff4e652a),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          )
                                         ],
                                       ),
+                                      Center(
+                                        child: Text(
+                                          mealNames[i],
+                                          style: const TextStyle(
+                                            color: Color(0xff4e652a),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 20,
+                                          ),
+                                        ),
+                                      )
                                     ],
-                                  )
-                                ],
-                              ),
-                              Center(
-                                child: Text(
-                                  mealNames.isEmpty
-                                      ? "Meal name"
-                                      : mealNames[mealNames.length - 1],
-                                  style: const TextStyle(
-                                    color: Color(0xff4e652a),
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
                                   ),
                                 ),
-                              )
-                            ],
-                          ),
-                        ),
+                              ),
+                            ),
+                        ],
                       ),
                     ),
                   ],
-                )
+                ),
               ]))
         ]));
   }
